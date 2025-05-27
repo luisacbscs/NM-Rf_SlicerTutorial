@@ -1,0 +1,7 @@
+petNode = slicer.util.getNode("4628: FDG_PET")
+arr = slicer.util.array(petNode.GetID())
+suv_factor=3435.7
+arr = arr/suv_factor
+suvNode=slicer.modules.volumes.logic().CloneVolume(slicer.mrmlScene,petNode,"SUV_FDG_PET")
+slicer.util.updateVolumeFromArray(suvNode, arr)
+slicer.app.processEvents()
